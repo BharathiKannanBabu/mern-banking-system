@@ -31,6 +31,8 @@ async function runUnitTests() {
 
     const txPaths = Transaction.schema.paths;
     assert(txPaths.account_id !== undefined, 'Transaction schema has "account_id"');
+    assert(txPaths.account_name !== undefined, 'Transaction schema has "account_name"');
+    assert(txPaths.account_name.isRequired === true, 'Transaction "account_name" is required');
     assert(txPaths.type !== undefined, 'Transaction schema has "type"');
     assert(
       JSON.stringify(txPaths.type.enumValues) === JSON.stringify(['credit', 'debit']),

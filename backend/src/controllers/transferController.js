@@ -105,6 +105,7 @@ const transferFunds = async (req, res, next) => {
         [
           {
             account_id: fromAccount._id,
+            account_name: fromAccount.name,
             type: 'debit',
             amount: numAmount,
             balance_after: newFromBalance,
@@ -113,6 +114,7 @@ const transferFunds = async (req, res, next) => {
           },
           {
             account_id: toAccount._id,
+            account_name: toAccount.name,
             type: 'credit',
             amount: numAmount,
             balance_after: newToBalance,

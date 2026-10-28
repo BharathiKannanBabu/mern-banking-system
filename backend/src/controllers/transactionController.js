@@ -70,6 +70,7 @@ const createTransaction = async (req, res, next) => {
         [
           {
             account_id: account._id,
+            account_name: account.name,
             type,
             amount: numAmount,
             balance_after: newBalance,

@@ -275,6 +275,7 @@ tast-manager-app/
     "data": {
       "_id": "673f1b3c4d5e6f7a8b9c0e1f",
       "account_id": "673f1a2b3c4d5e6f7a8b9c0d",
+      "account_name": "Jane Doe - Savings",
       "type": "credit",
       "amount": 250.5,
       "balance_after": 1750.5,
@@ -304,6 +305,7 @@ tast-manager-app/
       {
         "_id": "673f1b3c4d5e6f7a8b9c0e1f",
         "account_id": "673f1a2b3c4d5e6f7a8b9c0d",
+        "account_name": "Jane Doe - Savings",
         "type": "credit",
         "amount": 250.5,
         "balance_after": 1750.5,
@@ -386,6 +388,10 @@ To ensure financial accuracy, auditability, and production-grade reliability, th
 
 6. **Authentication & User Context**:
    - Per assignment scope, account-level authentication (JWT/OAuth/RBAC) is assumed to reside at the API gateway layer or handled downstream. The application exposes direct account-centric operations.
+
+7. **Point-in-Time Snapshot Denormalization (`account_name`)**:
+   - The transaction model intentionally stores a denormalized snapshot of the account holder's name (`account_name`) at transaction creation time.
+   - *Rationale*: Eliminates expensive `$lookup` / JOIN operations during high-frequency ledger queries, enables rapid direct database inspection, and preserves point-in-time receipt fidelity even if an account name changes in the future.
 
 ---
 

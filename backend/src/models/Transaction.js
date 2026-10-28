@@ -8,6 +8,11 @@ const transactionSchema = new mongoose.Schema(
       required: [true, 'Account ID is required'],
       index: true,
     },
+    account_name: {
+      type: String,
+      required: [true, 'Account name is required'],
+      trim: true,
+    },
     type: {
       type: String,
       enum: {
